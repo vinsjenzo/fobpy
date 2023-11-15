@@ -1,9 +1,20 @@
 import csv
-from docx.shared import Cm
-from docxtpl import DocxTemplate, InlineImage
+import os
+import urllib.request
+from docxtpl import DocxTemplate
 import datetime
 
-print('Welcome!\nParsing current draft list...')
+version = 'v1.0.0' 
+
+print('Welcome!\n')
+
+file_paths = ['currentdraft.txt', 'template.docx']
+
+for file_path in file_paths:
+    if not os.path.exists(file_path):
+        urllib.request.urlretrieve(f"https://raw.githubusercontent.com/vinsjenzo/fobpy/{version}/{file_path}", file_path)
+      
+print('Parsing current draft list...')
 beerDict ={}
 template = DocxTemplate('template.docx')
 now = datetime.datetime.now()
