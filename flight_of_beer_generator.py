@@ -4,15 +4,13 @@ import urllib.request
 from docxtpl import DocxTemplate
 import datetime
 
-version = 'v1.0.1' 
-
 print('Welcome!\n')
 
 file_paths = ['currentdraft.txt', 'template.docx']
 
 for file_path in file_paths:
     if not os.path.exists(file_path):
-        urllib.request.urlretrieve(f"https://raw.githubusercontent.com/vinsjenzo/fobpy/{version}/{file_path}", file_path)
+        urllib.request.urlretrieve(f"https://raw.githubusercontent.com/vinsjenzo/fobpy/main/{file_path}", file_path)
       
 print('Parsing current draft list...')
 beerDict ={}
