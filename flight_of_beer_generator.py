@@ -4,7 +4,7 @@ import urllib.request
 from docxtpl import DocxTemplate
 import datetime
 
-version = 'v1.0.0' 
+version = 'v1.0.1' 
 
 print('Welcome!\n')
 
