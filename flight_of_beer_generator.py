@@ -6,7 +6,7 @@ import datetime
 
 print('Welcome!\n')
 
-file_paths = ['currentdraft.txt', 'template.docx']
+file_paths = ['currentdraft.txt', 'template.docx', 'archive.txt']
 
 for file_path in file_paths:
     if not os.path.exists(file_path):

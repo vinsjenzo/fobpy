@@ -4,7 +4,7 @@ Witte Dame;Wheat beer;5.1;Fresh witbier made with wheat, sweetened orange peel a
 Ola La;Cold IPA;6.1;A fresh & clean Cold IPA with hints of grapefruit, pine & grapes. Bottom fermented (with a lager yeast), at a lower temp then normal for IPA's hence the "Cold".
 Bye Bye Summer;Bock;6.2;Bottom fermented bock beer. Featuring a malty, sweet toffee body with a soft finish with hints of figs and dates.
 40 Watt;Blond;6.3;Fresh and fruity Blond beer. Bit spicy but tasty.
-Brabantsche Weissheit;Weizen;7.0;Weizen made with wheat malts and local hops from Schijndel. A bit stronger than your usual German weizen. Fullbodied, creamy with a little hint of banana.
+Oude Haas;Dubbel;7;Velvety brown ale with a slightly sweet aftertaste accompanied by a certain touch of praline. De Old Hare (Oude Haas) refers to the oldest and last working brewery from Eindhoven in the early 20th century. 
 Shoque le Boque;Dubbelbock;8.4;Complex Dubbelbock "deluxe" made with tonka beans and figs. Resulting in an intense and flavourful beer with hints of vanilla, almond and a rich maltiness.
 Non de Jus;Cereal Tripel;8.8;Cereal triple made with malted wheat, oats and barley and finished with dried lemon peel, chamomile and grains of paradise. Floral tones.
 150 Watt;Quadrupel;10;Award winning Complex ruby red beer with a powerful body. Notes of dark dried fruits and slightly toasted bread. Followed by a long and soothing aftertaste.

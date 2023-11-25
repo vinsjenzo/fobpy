@@ -1,3 +1,6 @@
 Orchestra of Angels;NEIPA;6.3;Award winning New England IPA, tropical fruit flavours and friendly bitters.
-Oude Haas;Dubbel;7;Velvety brown ale with a slightly sweet aftertaste accompanied by a certain touch of praline. De Old Hare (Oude Haas) refers to the oldest and last working brewery from Eindhoven in the early 20th century. 
+Brabantsche Weissheit;Weizen;7.0;Weizen made with wheat malts and local hops from Schijndel. A bit stronger than your usual German weizen. Fullbodied, creamy with a little hint of banana.
 400 Volt;Russian Imperial Stout;10;A thiccc stout infused with madagascar bourbon vanilla. Nice full-bodied beer with hints of coffee, chocolate and a nice bitter.
+Nuit Noire;Winter Ale;10;Quadrupel with winter spices and herbs (cinnamon, cloves, bay leaves, cacao, dried Orange peel and raisins), packed with flavor and alcohol.
+Poire Noire;Winter Warmer;10;This variant of ‘Nuit Noire’ is especially brewed with ‘Peer’ in mind. Our man in black with a hefty taste of music. We added a firm load of ‘Stoofpeertjes’ to this dark and obscure beer to honour his work at our taproom for so many years.
+Gloeiwerk;Glühdrupel;10.3;Complex and delightful quad with typical glühwein flavours like cinnamon, allspice and orange zest.
