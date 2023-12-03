@@ -45,7 +45,7 @@ def create_new_fob_doc():
     chosenBeers = input("\nSelect your 4 beers pls! I.E. 1,4,5,11\tChoose q to cancel!\n")
     
     if(chosenBeers == 'q'):
-        return
+        return True
     chosenBeers = chosenBeers.split(',')
 
     chosenBeersList =[]
@@ -54,14 +54,13 @@ def create_new_fob_doc():
             index = int(chosenBeers[i])-1
         except ValueError:
             print('Sorry, did not understand that!')
-            return
+            return True
         if(index < 0 or index >= len(beerList)):
             print("Index out of range!")
-            return
+            return True
         
         chosenBeersList.append(beerList[index])
-        
-
+    
     context = {
         'day': day,
         'month': month,
@@ -72,14 +71,7 @@ def create_new_fob_doc():
     template.save(f'Flight of Beer {day}-{month}-{year}.docx')
 
     print("Flight of beer document succesfully generated!")
-
-# def print_current_draft_list():
-#     archiveList = parse_csv_file('archive.txt')
-#     currentList = parse_csv_file('currentdraft.txt')
-#     print('ARCHIVE:\n\n')
-#     print_beers(archiveList)
-#     print('\nCURRENT DRAFT:\n\n')
-#     print_beers(currentList)
+    return False
 
 def write_list_to_file(currentList, filename):
     with open(filename, 'w', newline='') as csvfile:
@@ -155,7 +147,7 @@ while loop:          ## While loop which will keep going until loop = False
             print("That probably wasn't an option..")
             pass  # Could happen in face of bad user input
     if choice==1:     
-        create_new_fob_doc()
+        loop = create_new_fob_doc()
     elif choice==2:
         remove_beer_from_current_draft_list()
     elif choice==3:
