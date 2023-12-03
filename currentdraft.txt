@@ -1,4 +1,3 @@
-beer;style;percent;info
 Electric Mayhem;Session IPA;4.0;Fresh and fruity session IPA, collab with van Moll. 
 Witte Dame;Wheat beer;5.1;Fresh witbier made with wheat, sweetened orange peel and coriander. Named after the old Philips headquarters in the center of Eindhoven.
 Ola La;Cold IPA;6.1;A fresh & clean Cold IPA with hints of grapefruit, pine & grapes. Bottom fermented (with a lager yeast), at a lower temp then normal for IPA's hence the "Cold".
