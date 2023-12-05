@@ -14,4 +14,4 @@ Oater Space;Oat wine;10.0;Collab with FIRST Craft beer from Hungary. Due to the 
 Nuit Noire;Winter Ale;10.0;Quadrupel with winter spices and herbs (cinnamon, cloves, bay leaves, cacao, dried Orange peel and raisins), packed with flavor and alcohol.
 Poire Noire;Winter Warmer;10.0;This variant of ‘Nuit Noire’ is especially brewed with ‘Peer’ in mind. Our man in black with a hefty taste of music. We added a firm load of ‘Stoofpeertjes’ to this dark and obscure beer to honour his work at our taproom for so many years.
 Gloeiwerk;Glühdrupel;10.3;Complex and delightful quad with typical glühwein flavours like cinnamon, allspice and orange zest.
-SuikerOhm BA Bourbon;Barley wine;11.0;This batch is barrel-aged for 15 months on Woodford and Weller bourbon casks. Only British malts and hops are used with and extended boil time of 10 hours! Very complex.
+SuikerOhm BA Bourbon;UK Barley wine;11.0;This batch is barrel-aged for 15 months on Woodford and Weller bourbon casks. Only British malts and hops are used with and extended boil time of 10 hours! Very complex.

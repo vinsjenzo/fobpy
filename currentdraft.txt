@@ -8,4 +8,4 @@ Shoque le Boque;Dubbelbock;8.4;"Complex Dubbelbock ""deluxe"" made with tonka be
 Non de Jus;Cereal Tripel;8.8;Cereal triple made with malted wheat, oats and barley and finished with dried lemon peel, chamomile and grains of paradise. Floral tones.
 150 Watt;Quadrupel;10.0;Award winning Complex ruby red beer with a powerful body. Notes of dark dried fruits and slightly toasted bread. Followed by a long and soothing aftertaste.
 Oater Space;Oat wine;10.0;Collab with FIRST Craft beer from Hungary. Due to the massive amount of malted oats and oat flakes used in the grainbill, this beer flows with a beautiful amber-gold color and an extremely smooth mouthfeel, reminiscent of butterscotch and macaroons, followed by a light bitterness with a fruity finish.
-SuikerOhm BA Bourbon;Barley wine;11.0;This batch is barrel-aged for 15 months on Woodford and Weller bourbon casks. Only British malts and hops are used with and extended boil time of 10 hours! Very complex.
+SuikerOhm BA Bourbon;UK Barley wine;11.0;This batch is barrel-aged for 15 months on Woodford and Weller bourbon casks. Only British malts and hops are used with and extended boil time of 10 hours! Very complex.
