@@ -125,24 +125,49 @@ def add_beer_to_current_draft_list():
     currentList.sort()
     write_list_to_file(currentList, 'currentdraft.txt')
 
+def save_new_beer_in_archive(newBeer, filename):
+    beerList = parse_csv_file(filename)
+    if not any(beer.name == newBeer.name for beer in beerList):
+        beerList.append(newBeer)
+        beerList.sort()
+        write_list_to_file(beerList, filename)
+        return True
+    return False
+
+def get_new_beer_from_input():
+    name = input("What is the name of the beer? ")
+    style = input("What style is the beer? ")
+    abv = input("What is the abv%? ")
+    abv = abv.replace(',', '.')
+    info = input("Please give a brief description of the beer: ")
+    
+    try:
+        newBeer = beer(name, style, float(abv), info)
+    except ValueError:
+        print("Couldn't parse the input")
+        return None
+    return newBeer
+
+
 def print_menu():       ## Your menu design here
     currentList = parse_csv_file('currentdraft.txt')
     print(25 * "-" , "CURRENT DRAFTS" , 25 * "-")
     print_beers(currentList)
     print(30 * "-" , "MENU" , 30 * "-")
-    print("1. Generate Flight of Beer Document")
-    print("2. Remove beer from current draft list")
-    print("3. Add beer to current draft list")
-    print("4. Exit")
+    print("1. Generate Flight of Beer document.")
+    print("2. Remove beer from current draft list.")
+    print("3. Add beer to current draft list.")
+    print("4. Create new beer in archive.")
+    print("5. Exit")
     print(66 * "-")
     
 loop=True  
 while loop:          ## While loop which will keep going until loop = False
     choice = None
-    while choice not in (1, 2, 3, 4):
+    while choice not in (1, 2, 3, 4, 5):
         print_menu()
         try:
-            choice = int(input("Enter your choice [1-4]: "))
+            choice = int(input("Enter your choice [1-5]: "))
         except ValueError:
             print("That probably wasn't an option..")
             pass  # Could happen in face of bad user input
@@ -153,5 +178,10 @@ while loop:          ## While loop which will keep going until loop = False
     elif choice==3:
         add_beer_to_current_draft_list()
     elif choice==4:
+        newBeer = get_new_beer_from_input()
+        # newBeer = beer('Oude Haas3', 'Biertje', 1.5, 'lekker bier')
+        if newBeer!= None:
+            print(f'\nAdded {newBeer.name}\n' if save_new_beer_in_archive(newBeer, 'archive.txt') else '\nBeer already in archive\n') 
+    elif choice==5:
         print ("OK BYE")
         loop=False # This will make the while loop to end as not value of loop is set to False

@@ -1,5 +1,5 @@
 class beer(object):
-     def __init__(self, name, style, abv, info):
+     def __init__(self, name, style, abv: float, info):
          self.name = name
          self.style = style
          self.abv = abv

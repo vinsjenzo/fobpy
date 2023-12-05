@@ -4,6 +4,7 @@ Ola La;Cold IPA;6.1;"A fresh & clean Cold IPA with hints of grapefruit, pine & g
 Bye Bye Summer;Bock;6.2;Bottom fermented bock beer. Featuring a malty, sweet toffee body with a soft finish with hints of figs and dates.
 40 Watt;Blond;6.3;Fresh and fruity Blond beer. Bit spicy but tasty.
 Orchestra of Angels;NEIPA;6.3;Award winning New England IPA, tropical fruit flavours and friendly bitters.
+Bokkige Boom;Bock;6.5;Old School lager bock brewed by SB013. 7 kinds of malts and German hops!
 Oude Haas;Dubbel;7.0;Velvety brown ale with a slightly sweet aftertaste accompanied by a certain touch of praline. De Old Hare (Oude Haas) refers to the oldest and last working brewery from Eindhoven in the early 20th century. 
 Brabantsche Weissheit;Weizen;7.0;Weizen made with wheat malts and local hops from Schijndel. A bit stronger than your usual German weizen. Fullbodied, creamy with a little hint of banana.
 Shoque le Boque;Dubbelbock;8.4;"Complex Dubbelbock ""deluxe"" made with tonka beans and figs. Resulting in an intense and flavourful beer with hints of vanilla, almond and a rich maltiness."
@@ -14,4 +15,5 @@ Oater Space;Oat wine;10.0;Collab with FIRST Craft beer from Hungary. Due to the 
 Nuit Noire;Winter Ale;10.0;Quadrupel with winter spices and herbs (cinnamon, cloves, bay leaves, cacao, dried Orange peel and raisins), packed with flavor and alcohol.
 Poire Noire;Winter Warmer;10.0;This variant of ‘Nuit Noire’ is especially brewed with ‘Peer’ in mind. Our man in black with a hefty taste of music. We added a firm load of ‘Stoofpeertjes’ to this dark and obscure beer to honour his work at our taproom for so many years.
 Gloeiwerk;Glühdrupel;10.3;Complex and delightful quad with typical glühwein flavours like cinnamon, allspice and orange zest.
+Upricing 8YA;BA Imperial Rice Ale;10.3;Imperial rice ale fermented with sake yeast and kaffir lime leaves, barrel aged on Moscatel Barrels. This beer is a homage to what our brewery is going through, moving to a bigger and better brewery, expanding in quality, output and lots of creativity! Rice Up!
 SuikerOhm BA Bourbon;UK Barley wine;11.0;This batch is barrel-aged for 15 months on Woodford and Weller bourbon casks. Only British malts and hops are used with and extended boil time of 10 hours! Very complex.
