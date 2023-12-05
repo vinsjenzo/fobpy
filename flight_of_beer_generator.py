@@ -16,50 +16,29 @@ for file_path in file_paths:
 def parse_csv_file(filename):
     beerList = []
     with open(filename) as csvfile:
-        csv_reader = csv.reader(csvfile, delimiter=';')
-        for row in csv_reader:
-            beerName = row[0]
-            beerStyle = row[1]
-            abv = float(row[2])
-            info = row[3]
-            beerList.append(beer(beerName, beerStyle, abv, info))
-        # print(f'Parsed {len(beerList)} beers.\n')
-    return beerList
-
+        try:
+            csv_reader = csv.reader(csvfile, delimiter=';')
+            for row in csv_reader:
+                beerName = row[0]
+                beerStyle = row[1]
+                abv = float(row[2])
+                info = row[3]
+                beerList.append(beer(beerName, beerStyle, abv, info))
+            # print(f'Parsed {len(beerList)} beers.\n')
+            return beerList
+        except:
+            return None
+        
 def print_beers(beerList):
     for i in range(len(beerList)):
         print(f'{i+1}. {beerList[i].name}')
 
-def create_new_fob_doc():
-    print('Parsing current draft list...')
+def create_new_fob_doc(chosenBeersList):
     template = DocxTemplate('template.docx')
     now = datetime.datetime.now()
     day = now.strftime('%d')
     month = now.strftime('%m')
     year = now.strftime('%y')
-
-    beerList = parse_csv_file('currentdraft.txt')
-
-    print_beers(beerList)
-
-    chosenBeers = input("\nSelect your 4 beers pls! I.E. 1,4,5,11\tChoose q to cancel!\n")
-    
-    if(chosenBeers == 'q'):
-        return True
-    chosenBeers = chosenBeers.split(',')
-
-    chosenBeersList =[]
-    for i in range(len(chosenBeers)):
-        try: 
-            index = int(chosenBeers[i])-1
-        except ValueError:
-            print('Sorry, did not understand that!')
-            return True
-        if(index < 0 or index >= len(beerList)):
-            print("Index out of range!")
-            return True
-        
-        chosenBeersList.append(beerList[index])
     
     context = {
         'day': day,
@@ -161,8 +140,8 @@ def print_menu():       ## Your menu design here
     print("5. Exit")
     print(66 * "-")
     
-loop=True  
-while loop:          ## While loop which will keep going until loop = False
+Running=True  
+while Running:          ## While loop which will keep going until loop = False
     choice = None
     while choice not in (1, 2, 3, 4, 5):
         print_menu()
@@ -170,9 +149,32 @@ while loop:          ## While loop which will keep going until loop = False
             choice = int(input("Enter your choice [1-5]: "))
         except ValueError:
             print("That probably wasn't an option..")
-            pass  # Could happen in face of bad user input
-    if choice==1:     
-        loop = create_new_fob_doc()
+    if choice==1:
+        beerList = parse_csv_file('currentdraft.txt')
+        
+        if beerList == None:
+            continue
+        
+        print_beers(beerList)
+        chosenBeers = input("\nSelect your 4 beers pls! I.E. 1,4,5,11\tChoose q to cancel!\n")
+        if(chosenBeers == 'q'):
+            continue
+        chosenBeers = chosenBeers.split(',')
+
+        chosenBeersList =[]
+        for i in range(len(chosenBeers)):
+            try: 
+                index = int(chosenBeers[i])-1
+            except ValueError:
+                print('Sorry, did not understand that!')
+                continue
+        
+            if(index < 0 or index >= len(beerList)):
+                print("Index out of range!")
+                continue
+            chosenBeersList.append(beerList[index])
+
+        Running = create_new_fob_doc(chosenBeersList)
     elif choice==2:
         remove_beer_from_current_draft_list()
     elif choice==3:
@@ -184,4 +186,4 @@ while loop:          ## While loop which will keep going until loop = False
             print(f'\nAdded {newBeer.name}\n' if save_new_beer_in_archive(newBeer, 'archive.txt') else '\nBeer already in archive\n') 
     elif choice==5:
         print ("OK BYE")
-        loop=False # This will make the while loop to end as not value of loop is set to False
+        loop=False
