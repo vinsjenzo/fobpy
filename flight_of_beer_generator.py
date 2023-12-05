@@ -90,7 +90,7 @@ def remove_beer_from_current_draft_list():
     except ValueError:
         print('Sorry, did not understand that!')
         return
-    if(index_to_delete < 0 | index_to_delete > len(currentList)):
+    if(index_to_delete < 0 or index_to_delete >= len(currentList)):
         print("Index out of range!")
         return
     currentList.pop(index_to_delete)
@@ -114,7 +114,7 @@ def add_beer_to_current_draft_list():
     except ValueError:
         print('Sorry, did not understand that!')
         return
-    if(indexToAdd < 0 | indexToAdd > len(archiveList)):
+    if(indexToAdd < 0 or indexToAdd >= len(archiveList)):
         print("Index out of range!")
         return
     beerToAdd = archiveList[indexToAdd]
