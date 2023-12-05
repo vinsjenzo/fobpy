@@ -1,0 +1,1 @@
+pyinstaller flight_of_beer_generator.spec --noconfirm
