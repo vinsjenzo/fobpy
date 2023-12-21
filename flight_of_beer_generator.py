@@ -22,7 +22,7 @@ for file_name in file_names:
 
 def parse_csv_file(filename):
     """Function parsing a beerlist txt file, returning a list of beers, name;style;abv;info."""
-    beer_list = []
+    _beer_list = []
     with open(filename, encoding="UTF-8") as csvfile:
         try:
             csv_reader = csv.reader(csvfile, delimiter=';')
@@ -31,18 +31,19 @@ def parse_csv_file(filename):
                 style = row[1]
                 abv = float(row[2])
                 info = row[3]
-                beer_list.append(Beer(name, style, abv, info))
+                _beer_list.append(Beer(name, style, abv, info))
             # print(f'Parsed {len(beerList)} beers.\n')
-            return beer_list
-        except:
+            return _beer_list
+        except FileNotFoundError:
+            print(f"File not found: {filename}\n")
             return None
 
 def print_beers(beer_list):
     """Function printing a list of beers."""
-    for i, beer in enumerate(beer_list):
-        print(f'{i+1}. {beer.name}')
+    for index, beer in enumerate(beer_list):
+        print(f'{index+1}. {beer.name}')
 
-def create_new_fob_doc(chosen_beers_list):
+def create_new_fob_doc(_chosen_beers_list):
     """Function creating a styled word document from a list of beers."""
     template = DocxTemplate('template.docx')
     now = datetime.datetime.now()
@@ -53,9 +54,9 @@ def create_new_fob_doc(chosen_beers_list):
     context = {
         'day': day,
         'month': month,
-        'chosenBeersList': chosen_beers_list
+        'chosenBeersList': _chosen_beers_list
     }
-    print(chosen_beers_list[0].style)
+    print(_chosen_beers_list[0].style)
 
     template.render(context, autoescape=True)
     try:
@@ -64,12 +65,9 @@ def create_new_fob_doc(chosen_beers_list):
         print(f"\n{FAIL}Couldnt save the generated document"
               f", please close the opened word document!{ENDC} \n")
         return False
-    except Exception as e:
-        print(e.args[-1])
-        return False
-    else:
-        print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
-        return True
+    
+    print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
+    return True
 
 def write_list_to_file(current_list, filename):
     """Fuction writing a beerlist to a .txt file."""
@@ -126,11 +124,11 @@ def add_beer_to_current_draft_list():
     current_list.sort()
     write_list_to_file(current_list, 'currentdraft.txt')
 
-def save_new_beer_in_archive(new_beer, filename):
+def save_new_beer_in_archive(_new_beer, filename):
     """Function saving a new beer in archive file."""
     beer_list = parse_csv_file(filename)
-    if not any(beer.name == new_beer.name for beer in beer_list):
-        beer_list.append(new_beer)
+    if not any(beer.name == _new_beer.name for beer in beer_list):
+        beer_list.append(_new_beer)
         beer_list.sort()
         write_list_to_file(beer_list, filename)
         return True
