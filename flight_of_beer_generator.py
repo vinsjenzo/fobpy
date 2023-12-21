@@ -57,8 +57,8 @@ def create_new_fob_doc(chosenBeersList):
     try:
         template.save(f'Flight of Beer {day}-{month}-{year}.docx')
     except PermissionError:
-        print(f"\n{FAIL}Couldnt save the generated document'
-              , please close the opened word document!{ENDC} \n")
+        print(f"\n{FAIL}Couldnt save the generated document"
+              ", please close the opened word document!{ENDC} \n")
         return False
 
     print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
