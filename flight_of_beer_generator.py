@@ -12,11 +12,12 @@ OKGREEN = '\033[92m'
 
 print('Welcome!\n')
 
-file_paths = ['currentdraft.txt', 'template.docx', 'archive.txt']
+base_path = "https://raw.githubusercontent.com/vinsjenzo/fobpy/main"
+file_names = ['currentdraft.txt', 'template.docx', 'archive.txt']
 
-for file_path in file_paths:
-    if not os.path.exists(file_path):
-        urllib.request.urlretrieve(f"https://raw.githubusercontent.com/vinsjenzo/fobpy/main/{file_path}", file_path)
+for file_name in file_names:
+    if not os.path.exists(file_name):
+        urllib.request.urlretrieve(f"{base_path}/{file_name}", file_name)
 
 def parse_csv_file(filename):
     beerList = []
@@ -33,7 +34,7 @@ def parse_csv_file(filename):
             return beerList
         except:
             return None
-        
+
 def print_beers(beerList):
     for i in range(len(beerList)):
         print(f'{i+1}. {beerList[i].name}')
@@ -44,7 +45,7 @@ def create_new_fob_doc(chosenBeersList):
     day = now.strftime('%d')
     month = now.strftime('%m')
     year = now.strftime('%y')
-    
+
     context = {
         'day': day,
         'month': month,
@@ -56,7 +57,8 @@ def create_new_fob_doc(chosenBeersList):
     try:
         template.save(f'Flight of Beer {day}-{month}-{year}.docx')
     except PermissionError:
-        print(f"\n{FAIL}Could not save the generated document, please close the opened word document!{ENDC} \n")
+        print(f"\n{FAIL}Couldnt save the generated document'
+              , please close the opened word document!{ENDC} \n")
         return False
 
     print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
