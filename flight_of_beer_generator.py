@@ -20,26 +20,26 @@ for file_name in file_names:
         urllib.request.urlretrieve(f"{BASE_PATH}/{file_name}", file_name)
 
 def parse_csv_file(filename):
-    beerList = []
-    with open(filename) as csvfile:
+    beer_list = []
+    with open(filename, encoding="UTF-8") as csvfile:
         try:
             csv_reader = csv.reader(csvfile, delimiter=';')
             for row in csv_reader:
-                beerName = row[0]
-                beerStyle = row[1]
+                name = row[0]
+                style = row[1]
                 abv = float(row[2])
                 info = row[3]
-                beerList.append(Beer(beerName, beerStyle, abv, info))
+                beer_list.append(Beer(name, style, abv, info))
             # print(f'Parsed {len(beerList)} beers.\n')
-            return beerList
+            return beer_list
         except:
             return None
 
-def print_beers(beerList):
-    for i in range(len(beerList)):
-        print(f'{i+1}. {beerList[i].name}')
+def print_beers(beer_list):
+    for i in range(len(beer_list)):
+        print(f'{i+1}. {beer_list[i].name}')
 
-def create_new_fob_doc(chosenBeersList):
+def create_new_fob_doc(chosen_beers_list):
     template = DocxTemplate('template.docx')
     now = datetime.datetime.now()
     day = now.strftime('%d')
@@ -49,9 +49,9 @@ def create_new_fob_doc(chosenBeersList):
     context = {
         'day': day,
         'month': month,
-        'chosenBeersList': chosenBeersList
+        'chosenBeersList': chosen_beers_list
     }
-    print(chosenBeersList[0].style)
+    print(chosen_beers_list[0].style)
 
     template.render(context, autoescape=True)
     try:
@@ -205,4 +205,3 @@ while RUNNING:          ## While loop which will keep going until loop = False
     elif CHOICE==5:
         print ("OK BYE")
         RUNNING=False
-# End-of-file (EOF)
