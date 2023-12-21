@@ -64,15 +64,15 @@ def create_new_fob_doc(chosenBeersList):
     print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
     return True
 
-def write_list_to_file(currentList, filename):
+def write_list_to_file(current_list, filename):
     with open(filename, 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=';')
-        for beer in currentList:
+        for beer in current_list:
             csvwriter.writerow([beer.name, beer.style, beer.abv, beer.info])
 
 def remove_beer_from_current_draft_list():
-    currentList = parse_csv_file('currentdraft.txt')
-    print_beers(currentList)
+    current_list = parse_csv_file('currentdraft.txt')
+    print_beers(current_list)
     response = input("Select beer to remove.\tChoose q to cancel.\n")
     if response == 'q':
         return
@@ -81,47 +81,47 @@ def remove_beer_from_current_draft_list():
     except ValueError:
         print(f'{FAIL}Sorry, did not understand that!{ENDC}')
         return
-    if(index_to_delete < 0 or index_to_delete >= len(currentList)):
+    if(index_to_delete < 0 or index_to_delete >= len(current_list)):
         print(f"{FAIL}Index out of range!{ENDC}")
         return
-    currentList.pop(index_to_delete)
-    currentList.sort()
-    write_list_to_file(currentList,'currentdraft.txt')
+    current_list.pop(index_to_delete)
+    current_list.sort()
+    write_list_to_file(current_list,'currentdraft.txt')
 
 
 def add_beer_to_current_draft_list():
     currentList = parse_csv_file('currentdraft.txt')
-    archiveList = parse_csv_file('archive.txt')
+    archive_list = parse_csv_file('archive.txt')
     print(30 * "-" , "CURRENT DRAFT" , 30 * "-")
     print_beers(currentList)
     print(30 * "-" , "ARCHIVE" , 30 * "-")
-    print_beers(archiveList)
+    print_beers(archive_list)
 
     response = input("Select beer to add.\tChoose q to cancel.\n")
     if response == 'q':
         return
     try:
-        indexToAdd = int(response)-1
+        index_to_add = int(response)-1
     except ValueError:
         print(f'{FAIL}Sorry, did not understand that!{ENDC}')
         return
-    if(indexToAdd < 0 or indexToAdd >= len(archiveList)):
+    if(index_to_add < 0 or index_to_add >= len(archive_list)):
         print(f"{FAIL}Index out of range!{ENDC}")
         return
-    beerToAdd = archiveList[indexToAdd]
-    if any(beer.name == beerToAdd.name for beer in currentList):
+    beer_to_add = archive_list[index_to_add]
+    if any(beer.name == beer_to_add.name for beer in currentList):
         print(f"{FAIL}Beer already in draft list!{ENDC}")
         return
-    currentList.append(beerToAdd)
+    currentList.append(beer_to_add)
     currentList.sort()
     write_list_to_file(currentList, 'currentdraft.txt')
 
 def save_new_beer_in_archive(newBeer, filename):
-    beerList = parse_csv_file(filename)
-    if not any(beer.name == newBeer.name for beer in beerList):
-        beerList.append(newBeer)
-        beerList.sort()
-        write_list_to_file(beerList, filename)
+    beer_list = parse_csv_file(filename)
+    if not any(beer.name == newBeer.name for beer in beer_list):
+        beer_list.append(newBeer)
+        beer_list.sort()
+        write_list_to_file(beer_list, filename)
         return True
     return False
 
@@ -154,54 +154,54 @@ def print_menu():       ## Your menu design here
 
 RUNNING=True
 while RUNNING:          ## While loop which will keep going until loop = False
-    choice = None
-    while choice not in (1, 2, 3, 4, 5):
+    CHOICE = None
+    while CHOICE not in (1, 2, 3, 4, 5):
         print_menu()
         try:
-            choice = int(input("Enter your choice [1-5]: "))
+            CHOICE = int(input("Enter your choice [1-5]: "))
         except ValueError:
             print(f"{FAIL}That probably wasn't an option..{ENDC}")
             break
-        if(choice <= 0 or choice > 5 ):
+        if(CHOICE <= 0 or CHOICE > 5 ):
             print(f"{FAIL}Your options are [1-5]{ENDC}")
-    if choice==1:
+    if CHOICE==1:
         beerList = parse_csv_file('currentdraft.txt')
         if beerList is None:
             continue
 
         print_beers(beerList)
-        chosenBeers = input("\nSelect your 4 beers pls! I.E. 1, 4, 5, 11\tChoose q to cancel!\n")
-        if chosenBeers == 'q':
+        chosen_beers = input("\nSelect your 4 beers pls! I.E. 1, 4, 5, 11\tChoose q to cancel!\n")
+        if chosen_beers == 'q':
             continue
-        chosenBeers = chosenBeers.split(',')
+        chosen_beers = chosen_beers.split(',')
 
         chosenBeersList =[]
-        failed = False
-        for i in range(len(chosenBeers)):
+        FAILED = False
+        for i in range(len(chosen_beers)):
             try: 
-                index = int(chosenBeers[i])-1
+                index = int(chosen_beers[i])-1
             except ValueError:
                 print(f'{FAIL}Sorry, did not understand that!{ENDC}')
-                failed = True
+                FAILED = True
                 break
         
             if(index < 0 or index >= len(beerList)):
                 print(F"{FAIL}Index out of range!{ENDC}")
-                failed = True
+                FAILED = True
                 break
             chosenBeersList.append(beerList[index])
-        if not failed:
+        if not FAILED:
             RUNNING = ~create_new_fob_doc(chosenBeersList)
-    elif choice==2:
+    elif CHOICE==2:
         remove_beer_from_current_draft_list()
-    elif choice==3:
+    elif CHOICE==3:
         add_beer_to_current_draft_list()
-    elif choice==4:
-        newBeer = get_new_beer_from_input()
-        if newBeer!= None:
-            print(f'\n{OKGREEN}Added {newBeer.name}{ENDC}\n' 
-                  if save_new_beer_in_archive(newBeer, 'archive.txt') 
+    elif CHOICE==4:
+        new_beer = get_new_beer_from_input()
+        if new_beer is not None:
+            print(f'\n{OKGREEN}Added {new_beer.name}{ENDC}\n' 
+                  if save_new_beer_in_archive(new_beer, 'archive.txt') 
                   else F'\n{FAIL}Beer already in archive{ENDC}\n') 
-    elif choice==5:
+    elif CHOICE==5:
         print ("OK BYE")
         RUNNING=False
