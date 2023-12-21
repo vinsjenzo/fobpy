@@ -60,13 +60,15 @@ def create_new_fob_doc(chosen_beers_list):
     template.render(context, autoescape=True)
     try:
         template.save(f'Flight of Beer {day}-{month}-{year}.docx')
-    except PermissionError:
+    except PermissionError as e:
         print(f"\n{FAIL}Couldnt save the generated document"
-              ", please close the opened word document!{ENDC} \n")
+              f", please close the opened word document!{ENDC} \n")
         return False
-
-    print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
-    return True
+    except Exception as e:
+        print(e.args[-1])
+    else:
+        print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
+        return True
 
 def write_list_to_file(current_list, filename):
     """Fuction writing a beerlist to a .txt file."""
