@@ -1,12 +1,13 @@
-Electric Mayhem;Session IPA;4.0;Fresh and fruity session IPA, collab with van Moll. 
-Witte Dame;Wheat beer;5.1;Fresh witbier made with wheat, sweetened orange peel and coriander. Named after the old Philips headquarters in the center of Eindhoven.
+Witte Dame;Wheat beer;5.1;Fresh witbier made with wheat, sweet orange peel and coriander. Named after the old Philips headquarters in the center of Eindhoven.
 Ola La;Cold IPA;6.1;"A fresh & clean Cold IPA with hints of grapefruit, pine & grapes. Bottom fermented (with a lager yeast), at a lower temp then normal for IPA's hence the ""Cold""."
-Bye Bye Summer;Bock;6.2;Bottom fermented bock beer. Featuring a malty, sweet toffee body with a soft finish with hints of figs and dates.
-40 Watt;Blond;6.3;Fresh and fruity Blond beer. Bit spicy but tasty.
-Orchestra of Angels;NEIPA;6.3;Award winning New England IPA, tropical fruit flavours and friendly bitters.
+40 Watt;Blond;6.3;Belgian style Blond beer. Lightly sweet and a bit malty.
+Orchestra of Angels;NEIPA;6.3;Award winning New England IPA, tropical fruit flavors and friendly bitters.
 Bokkige Boom;Bock;6.5;Old School lager bock brewed by SB013. 7 kinds of malts and German hops!
 Oude Haas;Dubbel;7.0;Velvety brown ale with a slightly sweet aftertaste accompanied by a certain touch of praline. De Old Hare (Oude Haas) refers to the oldest and last working brewery from Eindhoven in the early 20th century. 
-Shoque le Boque;Dubbelbock;8.4;"Complex Dubbelbock ""deluxe"" made with tonka beans and figs. Resulting in an intense and flavourful beer with hints of vanilla, almond and a rich maltiness."
-Non de Jus;Cereal Tripel;8.8;Cereal triple made with malted wheat, oats and barley and finished with dried lemon peel, chamomile and grains of paradise. Floral tones.
-150 Watt;Quadrupel;10.0;Award winning Complex ruby red beer with a powerful body. Notes of dark dried fruits and slightly toasted bread. Followed by a long and soothing aftertaste.
+Shoque le Boque;Dubbelbock;8.4;"Complex Dubbelbock ""deluxe"" made with tonka beans and figs. Resulting in an intense and flavorful beer with hints of vanilla, almond and a rich maltiness."
+Non de Jus;Cereal Tripel;8.8;Cereal triple made with flaked oats, wheat and barley, in adition to the usual barley malts, and finished with dried lemon peel, chamomile and grains of paradise. Fresh and floral tones.
+Lumineus Idee!;Tawny Port BA Tripel;8.8;Collab with de Bierprofessor op Stratumseind. A tripel barrel aged on tawny port barrels.
+Oater Space;Oat wine;10.0;Collab with FIRST Craft beer from Hungary. Due to the massive amount of malted oats and oat flakes used in the grainbill, this beer flows with a beautiful amber-gold color and an extremely smooth mouthfeel, reminiscent of butterscotch and macaroons, followed by a light bitterness with a fruity finish.
+Poire Noire;Winter Warmer;10.0;This variant of 'Nuit Noire' is especially brewed with 'Peer' in mind. Our man in black with a hefty taste of music. We added a firm load of 'Stoofpeertjes' to this dark and obscure beer to honour his work at our taproom for so many years.
+Gloeiwerk;Gluhdrupel;10.3;Complex and delightful quad with typical gluhwein flavors like cinnamon, allspice and orange zest.
 SuikerOhm BA Bourbon;UK Barley wine;11.0;This batch is barrel-aged for 15 months on Woodford and Weller bourbon casks. Only British malts and hops are used with and extended boil time of 10 hours! Very complex.

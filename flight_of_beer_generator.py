@@ -1,9 +1,14 @@
+# -*- coding: utf-8 -*-
 import csv
 import os
 import urllib.request
 from docxtpl import DocxTemplate
 import datetime
 from beer import beer
+
+FAIL = '\033[91m'
+ENDC = '\033[0m'
+OKGREEN = '\033[92m'
 
 print('Welcome!\n')
 
@@ -45,12 +50,17 @@ def create_new_fob_doc(chosenBeersList):
         'month': month,
         'chosenBeersList': chosenBeersList
     }
+    print(chosenBeersList[0].style)
 
-    template.render(context)
-    template.save(f'Flight of Beer {day}-{month}-{year}.docx')
+    template.render(context, autoescape=True)
+    try:
+        template.save(f'Flight of Beer {day}-{month}-{year}.docx')
+    except PermissionError:
+        print(f"\n{FAIL}Could not save the generated document, please close the opened word document!{ENDC} \n")
+        return False
 
-    print("Flight of beer document succesfully generated!")
-    return False
+    print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
+    return True
 
 def write_list_to_file(currentList, filename):
     with open(filename, 'w', newline='') as csvfile:
@@ -67,10 +77,10 @@ def remove_beer_from_current_draft_list():
     try: 
         index_to_delete = int(response)-1
     except ValueError:
-        print('Sorry, did not understand that!')
+        print(f'{FAIL}Sorry, did not understand that!{ENDC}')
         return
     if(index_to_delete < 0 or index_to_delete >= len(currentList)):
-        print("Index out of range!")
+        print(f"{FAIL}Index out of range!{ENDC}")
         return
     currentList.pop(index_to_delete)
     currentList.sort()
@@ -91,14 +101,14 @@ def add_beer_to_current_draft_list():
     try: 
         indexToAdd = int(response)-1
     except ValueError:
-        print('Sorry, did not understand that!')
+        print(f'{FAIL}Sorry, did not understand that!{ENDC}')
         return
     if(indexToAdd < 0 or indexToAdd >= len(archiveList)):
-        print("Index out of range!")
+        print(f"{FAIL}Index out of range!{ENDC}")
         return
     beerToAdd = archiveList[indexToAdd]
     if any(beer.name == beerToAdd.name for beer in currentList):
-        print("Beer already in draft list!")
+        print(f"{FAIL}Beer already in draft list!{ENDC}")
         return
     currentList.append(beerToAdd)
     currentList.sort()
@@ -123,7 +133,7 @@ def get_new_beer_from_input():
     try:
         newBeer = beer(name, style, float(abv), info)
     except ValueError:
-        print("Couldn't parse the input")
+        print(f"{FAIL}Couldn't parse the input{ENDC}")
         return None
     return newBeer
 
@@ -148,7 +158,10 @@ while Running:          ## While loop which will keep going until loop = False
         try:
             choice = int(input("Enter your choice [1-5]: "))
         except ValueError:
-            print("That probably wasn't an option..")
+            print(f"{FAIL}That probably wasn't an option..{ENDC}")
+            break
+        if(choice <= 0 or choice > 5 ):
+            print(f"{FAIL}Your options are [1-5]{ENDC}")
     if choice==1:
         beerList = parse_csv_file('currentdraft.txt')
         
@@ -156,34 +169,36 @@ while Running:          ## While loop which will keep going until loop = False
             continue
         
         print_beers(beerList)
-        chosenBeers = input("\nSelect your 4 beers pls! I.E. 1,4,5,11\tChoose q to cancel!\n")
+        chosenBeers = input("\nSelect your 4 beers pls! I.E. 1, 4, 5, 11\tChoose q to cancel!\n")
         if(chosenBeers == 'q'):
             continue
         chosenBeers = chosenBeers.split(',')
 
         chosenBeersList =[]
+        failed = False
         for i in range(len(chosenBeers)):
             try: 
                 index = int(chosenBeers[i])-1
             except ValueError:
-                print('Sorry, did not understand that!')
-                continue
+                print(f'{FAIL}Sorry, did not understand that!{ENDC}')
+                failed = True
+                break
         
             if(index < 0 or index >= len(beerList)):
-                print("Index out of range!")
-                continue
+                print(F"{FAIL}Index out of range!{ENDC}")
+                failed = True
+                break
             chosenBeersList.append(beerList[index])
-
-        Running = create_new_fob_doc(chosenBeersList)
+        if(not failed):
+            Running = ~create_new_fob_doc(chosenBeersList)
     elif choice==2:
         remove_beer_from_current_draft_list()
     elif choice==3:
         add_beer_to_current_draft_list()
     elif choice==4:
         newBeer = get_new_beer_from_input()
-        # newBeer = beer('Oude Haas3', 'Biertje', 1.5, 'lekker bier')
         if newBeer!= None:
-            print(f'\nAdded {newBeer.name}\n' if save_new_beer_in_archive(newBeer, 'archive.txt') else '\nBeer already in archive\n') 
+            print(f'\n{OKGREEN}Added {newBeer.name}{ENDC}\n' if save_new_beer_in_archive(newBeer, 'archive.txt') else F'\n{FAIL}Beer already in archive{ENDC}\n') 
     elif choice==5:
         print ("OK BYE")
-        loop=False
+        Running=False
