@@ -117,10 +117,10 @@ def add_beer_to_current_draft_list():
     currentList.sort()
     write_list_to_file(currentList, 'currentdraft.txt')
 
-def save_new_beer_in_archive(newBeer, filename):
+def save_new_beer_in_archive(new_beer, filename):
     beer_list = parse_csv_file(filename)
-    if not any(beer.name == newBeer.name for beer in beer_list):
-        beer_list.append(newBeer)
+    if not any(beer.name == new_beer.name for beer in beer_list):
+        beer_list.append(new_beer)
         beer_list.sort()
         write_list_to_file(beer_list, filename)
         return True
@@ -142,9 +142,9 @@ def get_new_beer_from_input():
 
 
 def print_menu():       ## Your menu design here
-    currentList = parse_csv_file('currentdraft.txt')
+    current_list = parse_csv_file('currentdraft.txt')
     print(25 * "-" , "CURRENT DRAFTS" , 25 * "-")
-    print_beers(currentList)
+    print_beers(current_list)
     print(30 * "-" , "MENU" , 30 * "-")
     print("1. Generate Flight of Beer document.")
     print("2. Remove beer from current draft list.")
