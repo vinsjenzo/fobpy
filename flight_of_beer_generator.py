@@ -21,6 +21,7 @@ for file_name in file_names:
         urllib.request.urlretrieve(f"{BASE_PATH}/{file_name}", file_name)
 
 def parse_csv_file(filename):
+    """Function parsing a beerlist txt file, returning a list of beers, name;style;abv;info."""
     beer_list = []
     with open(filename, encoding="UTF-8") as csvfile:
         try:
@@ -37,10 +38,12 @@ def parse_csv_file(filename):
             return None
 
 def print_beers(beer_list):
+    """Function printing a list of beers."""
     for i, beer in enumerate(beer_list):
         print(f'{i+1}. {beer.name}')
 
 def create_new_fob_doc(chosen_beers_list):
+    """Function creating a styled word document from a list of beers."""
     template = DocxTemplate('template.docx')
     now = datetime.datetime.now()
     day = now.strftime('%d')
@@ -66,12 +69,14 @@ def create_new_fob_doc(chosen_beers_list):
     return True
 
 def write_list_to_file(current_list, filename):
+    """Fuction writing a beerlist to a .txt file."""
     with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=';')
         for beer in current_list:
             csvwriter.writerow([beer.name, beer.style, beer.abv, beer.info])
 
 def remove_beer_from_current_draft_list():
+    """Function removing a beer from a list."""
     current_list = parse_csv_file('currentdraft.txt')
     print_beers(current_list)
     response = input("Select beer to remove.\tChoose q to cancel.\n")
@@ -91,6 +96,7 @@ def remove_beer_from_current_draft_list():
 
 
 def add_beer_to_current_draft_list():
+    """Function adding a beer to curent draft list from archive.""" 
     currentList = parse_csv_file('currentdraft.txt')
     archive_list = parse_csv_file('archive.txt')
     print(30 * "-" , "CURRENT DRAFT" , 30 * "-")
@@ -118,6 +124,7 @@ def add_beer_to_current_draft_list():
     write_list_to_file(currentList, 'currentdraft.txt')
 
 def save_new_beer_in_archive(new_beer, filename):
+    """Function saving a new beer in archive file."""
     beer_list = parse_csv_file(filename)
     if not any(beer.name == new_beer.name for beer in beer_list):
         beer_list.append(new_beer)
@@ -127,6 +134,7 @@ def save_new_beer_in_archive(new_beer, filename):
     return False
 
 def get_new_beer_from_input():
+    """Function creating a new beer from input."""
     name = input("What is the name of the beer? ")
     style = input("What style is the beer? ")
     abv = input("What is the abv%? ")
@@ -141,7 +149,8 @@ def get_new_beer_from_input():
     return newBeer
 
 
-def print_menu():       ## Your menu design here
+def print_menu():
+    """Function printing the program menu."""
     current_list = parse_csv_file('currentdraft.txt')
     print(25 * "-" , "CURRENT DRAFTS" , 25 * "-")
     print_beers(current_list)
