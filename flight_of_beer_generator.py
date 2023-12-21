@@ -4,7 +4,7 @@ import os
 import urllib.request
 from docxtpl import DocxTemplate
 import datetime
-from beer import beer
+from beer import Beer
 
 FAIL = '\033[91m'
 ENDC = '\033[0m'
@@ -28,7 +28,7 @@ def parse_csv_file(filename):
                 beerStyle = row[1]
                 abv = float(row[2])
                 info = row[3]
-                beerList.append(beer(beerName, beerStyle, abv, info))
+                beerList.append(Beer(beerName, beerStyle, abv, info))
             # print(f'Parsed {len(beerList)} beers.\n')
             return beerList
         except:
@@ -131,7 +131,7 @@ def get_new_beer_from_input():
     info = input("Please give a brief description of the beer: ")
     
     try:
-        newBeer = beer(name, style, float(abv), info)
+        newBeer = Beer(name, style, float(abv), info)
     except ValueError:
         print(f"{FAIL}Couldn't parse the input{ENDC}")
         return None
