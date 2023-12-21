@@ -12,12 +12,12 @@ OKGREEN = '\033[92m'
 
 print('Welcome!\n')
 
-base_path = "https://raw.githubusercontent.com/vinsjenzo/fobpy/main"
+BASE_PATH = "https://raw.githubusercontent.com/vinsjenzo/fobpy/main"
 file_names = ['currentdraft.txt', 'template.docx', 'archive.txt']
 
 for file_name in file_names:
     if not os.path.exists(file_name):
-        urllib.request.urlretrieve(f"{base_path}/{file_name}", file_name)
+        urllib.request.urlretrieve(f"{BASE_PATH}/{file_name}", file_name)
 
 def parse_csv_file(filename):
     beerList = []
@@ -175,23 +175,23 @@ while RUNNING:          ## While loop which will keep going until loop = False
             continue
         chosen_beers = chosen_beers.split(',')
 
-        chosenBeersList =[]
+        chosen_beers_list =[]
         FAILED = False
         for i in range(len(chosen_beers)):
-            try: 
+            try:
                 index = int(chosen_beers[i])-1
             except ValueError:
                 print(f'{FAIL}Sorry, did not understand that!{ENDC}')
                 FAILED = True
                 break
-        
+
             if(index < 0 or index >= len(beerList)):
                 print(F"{FAIL}Index out of range!{ENDC}")
                 FAILED = True
                 break
-            chosenBeersList.append(beerList[index])
+            chosen_beers_list.append(beerList[index])
         if not FAILED:
-            RUNNING = ~create_new_fob_doc(chosenBeersList)
+            RUNNING = ~create_new_fob_doc(chosen_beers_list)
     elif CHOICE==2:
         remove_beer_from_current_draft_list()
     elif CHOICE==3:
@@ -199,9 +199,10 @@ while RUNNING:          ## While loop which will keep going until loop = False
     elif CHOICE==4:
         new_beer = get_new_beer_from_input()
         if new_beer is not None:
-            print(f'\n{OKGREEN}Added {new_beer.name}{ENDC}\n' 
-                  if save_new_beer_in_archive(new_beer, 'archive.txt') 
-                  else F'\n{FAIL}Beer already in archive{ENDC}\n') 
+            print(f'\n{OKGREEN}Added {new_beer.name}{ENDC}\n'
+                  if save_new_beer_in_archive(new_beer, 'archive.txt')
+                  else F'\n{FAIL}Beer already in archive{ENDC}\n')
     elif CHOICE==5:
         print ("OK BYE")
         RUNNING=False
+# End-of-file (EOF)
