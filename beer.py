@@ -9,6 +9,7 @@ class Beer:
 
     def __lt__(self, other):
         return self.abv < other.abv
-    
-    def getName(self):
+
+    def get_name(self):
+        """Get the name of a beer."""
         return self.name
