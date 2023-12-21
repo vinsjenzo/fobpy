@@ -74,9 +74,9 @@ def remove_beer_from_current_draft_list():
     currentList = parse_csv_file('currentdraft.txt')
     print_beers(currentList)
     response = input("Select beer to remove.\tChoose q to cancel.\n")
-    if(response == 'q'):
+    if response == 'q':
         return
-    try: 
+    try:
         index_to_delete = int(response)-1
     except ValueError:
         print(f'{FAIL}Sorry, did not understand that!{ENDC}')
@@ -88,7 +88,7 @@ def remove_beer_from_current_draft_list():
     currentList.sort()
     write_list_to_file(currentList,'currentdraft.txt')
 
-    
+
 def add_beer_to_current_draft_list():
     currentList = parse_csv_file('currentdraft.txt')
     archiveList = parse_csv_file('archive.txt')
@@ -98,9 +98,9 @@ def add_beer_to_current_draft_list():
     print_beers(archiveList)
 
     response = input("Select beer to add.\tChoose q to cancel.\n")
-    if(response == 'q'):
+    if response == 'q':
         return
-    try: 
+    try:
         indexToAdd = int(response)-1
     except ValueError:
         print(f'{FAIL}Sorry, did not understand that!{ENDC}')
@@ -131,7 +131,7 @@ def get_new_beer_from_input():
     abv = input("What is the abv%? ")
     abv = abv.replace(',', '.')
     info = input("Please give a brief description of the beer: ")
-    
+
     try:
         newBeer = Beer(name, style, float(abv), info)
     except ValueError:
@@ -151,9 +151,9 @@ def print_menu():       ## Your menu design here
     print("4. Create new beer in archive.")
     print("5. Exit")
     print(66 * "-")
-    
-Running=True  
-while Running:          ## While loop which will keep going until loop = False
+
+RUNNING=True
+while RUNNING:          ## While loop which will keep going until loop = False
     choice = None
     while choice not in (1, 2, 3, 4, 5):
         print_menu()
@@ -166,13 +166,12 @@ while Running:          ## While loop which will keep going until loop = False
             print(f"{FAIL}Your options are [1-5]{ENDC}")
     if choice==1:
         beerList = parse_csv_file('currentdraft.txt')
-        
-        if beerList == None:
+        if beerList is None:
             continue
-        
+
         print_beers(beerList)
         chosenBeers = input("\nSelect your 4 beers pls! I.E. 1, 4, 5, 11\tChoose q to cancel!\n")
-        if(chosenBeers == 'q'):
+        if chosenBeers == 'q':
             continue
         chosenBeers = chosenBeers.split(',')
 
@@ -191,8 +190,8 @@ while Running:          ## While loop which will keep going until loop = False
                 failed = True
                 break
             chosenBeersList.append(beerList[index])
-        if(not failed):
-            Running = ~create_new_fob_doc(chosenBeersList)
+        if not failed:
+            RUNNING = ~create_new_fob_doc(chosenBeersList)
     elif choice==2:
         remove_beer_from_current_draft_list()
     elif choice==3:
@@ -200,7 +199,9 @@ while Running:          ## While loop which will keep going until loop = False
     elif choice==4:
         newBeer = get_new_beer_from_input()
         if newBeer!= None:
-            print(f'\n{OKGREEN}Added {newBeer.name}{ENDC}\n' if save_new_beer_in_archive(newBeer, 'archive.txt') else F'\n{FAIL}Beer already in archive{ENDC}\n') 
+            print(f'\n{OKGREEN}Added {newBeer.name}{ENDC}\n' 
+                  if save_new_beer_in_archive(newBeer, 'archive.txt') 
+                  else F'\n{FAIL}Beer already in archive{ENDC}\n') 
     elif choice==5:
         print ("OK BYE")
-        Running=False
+        RUNNING=False
