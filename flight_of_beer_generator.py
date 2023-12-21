@@ -36,8 +36,8 @@ def parse_csv_file(filename):
             return None
 
 def print_beers(beer_list):
-    for i in range(len(beer_list)):
-        print(f'{i+1}. {beer_list[i].name}')
+    for i, beer in enumerate(beer_list):
+        print(f'{i+1}. {beer.name}')
 
 def create_new_fob_doc(chosen_beers_list):
     template = DocxTemplate('template.docx')
@@ -65,7 +65,7 @@ def create_new_fob_doc(chosen_beers_list):
     return True
 
 def write_list_to_file(current_list, filename):
-    with open(filename, 'w', newline='') as csvfile:
+    with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=';')
         for beer in current_list:
             csvwriter.writerow([beer.name, beer.style, beer.abv, beer.info])
@@ -165,11 +165,11 @@ while RUNNING:          ## While loop which will keep going until loop = False
         if(CHOICE <= 0 or CHOICE > 5 ):
             print(f"{FAIL}Your options are [1-5]{ENDC}")
     if CHOICE==1:
-        beerList = parse_csv_file('currentdraft.txt')
-        if beerList is None:
+        beer_list = parse_csv_file('currentdraft.txt')
+        if beer_list is None:
             continue
 
-        print_beers(beerList)
+        print_beers(beer_list)
         chosen_beers = input("\nSelect your 4 beers pls! I.E. 1, 4, 5, 11\tChoose q to cancel!\n")
         if chosen_beers == 'q':
             continue
@@ -185,11 +185,11 @@ while RUNNING:          ## While loop which will keep going until loop = False
                 FAILED = True
                 break
 
-            if(index < 0 or index >= len(beerList)):
+            if(index < 0 or index >= len(beer_list)):
                 print(F"{FAIL}Index out of range!{ENDC}")
                 FAILED = True
                 break
-            chosen_beers_list.append(beerList[index])
+            chosen_beers_list.append(beer_list[index])
         if not FAILED:
             RUNNING = ~create_new_fob_doc(chosen_beers_list)
     elif CHOICE==2:
