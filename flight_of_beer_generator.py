@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+"""Module for printing a styled document with info for selected beers."""
 import csv
 import os
 import urllib.request
-from docxtpl import DocxTemplate
 import datetime
+from docxtpl import DocxTemplate
 from beer import Beer
 
 FAIL = '\033[91m'
