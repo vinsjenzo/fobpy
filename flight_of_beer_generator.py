@@ -97,10 +97,10 @@ def remove_beer_from_current_draft_list():
 
 def add_beer_to_current_draft_list():
     """Function adding a beer to curent draft list from archive.""" 
-    currentList = parse_csv_file('currentdraft.txt')
+    current_list = parse_csv_file('currentdraft.txt')
     archive_list = parse_csv_file('archive.txt')
     print(30 * "-" , "CURRENT DRAFT" , 30 * "-")
-    print_beers(currentList)
+    print_beers(current_list)
     print(30 * "-" , "ARCHIVE" , 30 * "-")
     print_beers(archive_list)
 
@@ -116,12 +116,12 @@ def add_beer_to_current_draft_list():
         print(f"{FAIL}Index out of range!{ENDC}")
         return
     beer_to_add = archive_list[index_to_add]
-    if any(beer.name == beer_to_add.name for beer in currentList):
+    if any(beer.name == beer_to_add.name for beer in current_list):
         print(f"{FAIL}Beer already in draft list!{ENDC}")
         return
-    currentList.append(beer_to_add)
-    currentList.sort()
-    write_list_to_file(currentList, 'currentdraft.txt')
+    current_list.append(beer_to_add)
+    current_list.sort()
+    write_list_to_file(current_list, 'currentdraft.txt')
 
 def save_new_beer_in_archive(new_beer, filename):
     """Function saving a new beer in archive file."""
@@ -142,11 +142,11 @@ def get_new_beer_from_input():
     info = input("Please give a brief description of the beer: ")
 
     try:
-        newBeer = Beer(name, style, float(abv), info)
+        new_beer = Beer(name, style, float(abv), info)
     except ValueError:
         print(f"{FAIL}Couldn't parse the input{ENDC}")
         return None
-    return newBeer
+    return new_beer
 
 
 def print_menu():
