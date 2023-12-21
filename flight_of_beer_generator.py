@@ -38,9 +38,9 @@ def parse_csv_file(filename):
             print(f"File not found: {filename}\n")
             return None
 
-def print_beers(beer_list):
+def print_beers(_beer_list):
     """Function printing a list of beers."""
-    for index, beer in enumerate(beer_list):
+    for index, beer in enumerate(_beer_list):
         print(f'{index+1}. {beer.name}')
 
 def create_new_fob_doc(_chosen_beers_list):
@@ -65,7 +65,7 @@ def create_new_fob_doc(_chosen_beers_list):
         print(f"\n{FAIL}Couldnt save the generated document"
               f", please close the opened word document!{ENDC} \n")
         return False
-    
+
     print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
     return True
 
@@ -126,11 +126,11 @@ def add_beer_to_current_draft_list():
 
 def save_new_beer_in_archive(_new_beer, filename):
     """Function saving a new beer in archive file."""
-    beer_list = parse_csv_file(filename)
-    if not any(beer.name == _new_beer.name for beer in beer_list):
-        beer_list.append(_new_beer)
-        beer_list.sort()
-        write_list_to_file(beer_list, filename)
+    _beer_list = parse_csv_file(filename)
+    if not any(beer.name == _new_beer.name for beer in _beer_list):
+        _beer_list.append(_new_beer)
+        _beer_list.sort()
+        write_list_to_file(_beer_list, filename)
         return True
     return False
 
@@ -143,11 +143,11 @@ def get_new_beer_from_input():
     info = input("Please give a brief description of the beer: ")
 
     try:
-        new_beer = Beer(name, style, float(abv), info)
+        _new_beer = Beer(name, style, float(abv), info)
     except ValueError:
         print(f"{FAIL}Couldn't parse the input{ENDC}")
         return None
-    return new_beer
+    return _new_beer
 
 
 def print_menu():

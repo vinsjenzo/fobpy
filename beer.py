@@ -1,3 +1,4 @@
+"""Module containting beer class definition"""
 class Beer:
     """Class representing a beer"""
     def __init__(self, name, style, abv: float, info):
@@ -8,3 +9,6 @@ class Beer:
 
     def __lt__(self, other):
         return self.abv < other.abv
+    
+    def getName(self):
+        return self.name
