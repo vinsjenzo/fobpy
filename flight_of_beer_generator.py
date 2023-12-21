@@ -56,7 +56,6 @@ def create_new_fob_doc(_chosen_beers_list):
         'month': month,
         'chosenBeersList': _chosen_beers_list
     }
-    print(_chosen_beers_list[0].style)
 
     template.render(context, autoescape=True)
     try:
