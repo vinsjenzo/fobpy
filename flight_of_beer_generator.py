@@ -171,26 +171,26 @@ while RUNNING:          ## While loop which will keep going until loop = False
             continue
 
         print_beers(beer_list)
-        chosen_beers = input("\nSelect your 4 beers pls! I.E. 1, 4, 5, 11\tChoose q to cancel!\n")
-        if chosen_beers == 'q':
+        chosen_indices = input("\nSelect your 4 beers pls! I.E. 1, 4, 5, 11\tChoose q to cancel!\n")
+        if chosen_indices == 'q':
             continue
-        chosen_beers = chosen_beers.split(',')
+        chosen_indices = chosen_indices.split(',')
 
         chosen_beers_list =[]
         FAILED = False
-        for i in range(len(chosen_beers)):
+        for i, chosen_index in enumerate(chosen_indices):
             try:
-                index = int(chosen_beers[i])-1
+                index_beer_list = int(chosen_index)-1
             except ValueError:
                 print(f'{FAIL}Sorry, did not understand that!{ENDC}')
                 FAILED = True
                 break
 
-            if(index < 0 or index >= len(beer_list)):
+            if(index_beer_list < 0 or index_beer_list >= len(beer_list)):
                 print(F"{FAIL}Index out of range!{ENDC}")
                 FAILED = True
                 break
-            chosen_beers_list.append(beer_list[index])
+            chosen_beers_list.append(beer_list[index_beer_list])
         if not FAILED:
             RUNNING = ~create_new_fob_doc(chosen_beers_list)
     elif CHOICE==2:
