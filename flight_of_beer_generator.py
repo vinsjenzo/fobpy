@@ -18,6 +18,7 @@ file_names = ['currentdraft.txt', 'template.docx', 'archive.txt']
 
 for file_name in file_names:
     if not os.path.exists(file_name):
+        print(f"Downloading {file_name}...")
         urllib.request.urlretrieve(f"{BASE_PATH}/{file_name}", file_name)
 
 def parse_csv_file(filename):
