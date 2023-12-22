@@ -18,7 +18,9 @@ file_names = ['currentdraft.txt', 'template.docx', 'archive.txt']
 
 for file_name in file_names:
     if not os.path.exists(file_name):
+        print(f"Downloading {file_name}...")
         urllib.request.urlretrieve(f"{BASE_PATH}/{file_name}", file_name)
+
 
 def parse_csv_file(filename):
     """Function parsing a beerlist txt file, returning a list of beers, name;style;abv;info."""
@@ -38,10 +40,12 @@ def parse_csv_file(filename):
             print(f"File not found: {filename}\n")
             return None
 
+
 def print_beers(_beer_list):
     """Function printing a list of beers."""
     for index, beer in enumerate(_beer_list):
         print(f'{index+1}. {beer.name}')
+
 
 def create_new_fob_doc(_chosen_beers_list):
     """Function creating a styled word document from a list of beers."""
@@ -56,7 +60,6 @@ def create_new_fob_doc(_chosen_beers_list):
         'month': month,
         'chosenBeersList': _chosen_beers_list
     }
-    print(_chosen_beers_list[0].style)
 
     template.render(context, autoescape=True)
     try:
@@ -69,12 +72,14 @@ def create_new_fob_doc(_chosen_beers_list):
     print(f"{OKGREEN}Flight of beer document succesfully generated!{ENDC}")
     return True
 
+
 def write_list_to_file(current_list, filename):
     """Fuction writing a beerlist to a .txt file."""
     with open(filename, 'w', encoding='UTF-8', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=';')
         for beer in current_list:
             csvwriter.writerow([beer.name, beer.style, beer.abv, beer.info])
+
 
 def remove_beer_from_current_draft_list():
     """Function removing a beer from a list."""
@@ -100,9 +105,9 @@ def add_beer_to_current_draft_list():
     """Function adding a beer to curent draft list from archive.""" 
     current_list = parse_csv_file('currentdraft.txt')
     archive_list = parse_csv_file('archive.txt')
-    print(30 * "-" , "CURRENT DRAFT" , 30 * "-")
+    print(30 * "-", "CURRENT DRAFT", 30 * "-")
     print_beers(current_list)
-    print(30 * "-" , "ARCHIVE" , 30 * "-")
+    print(30 * "-", "ARCHIVE", 30 * "-")
     print_beers(archive_list)
 
     response = input("Select beer to add.\tChoose q to cancel.\n")
@@ -124,6 +129,7 @@ def add_beer_to_current_draft_list():
     current_list.sort()
     write_list_to_file(current_list, 'currentdraft.txt')
 
+
 def save_new_beer_in_archive(_new_beer, filename):
     """Function saving a new beer in archive file."""
     _beer_list = parse_csv_file(filename)
@@ -133,6 +139,7 @@ def save_new_beer_in_archive(_new_beer, filename):
         write_list_to_file(_beer_list, filename)
         return True
     return False
+
 
 def get_new_beer_from_input():
     """Function creating a new beer from input."""
@@ -150,18 +157,20 @@ def get_new_beer_from_input():
     return _new_beer
 
 
+
 def print_menu():
     """Function printing the program menu."""
     current_list = parse_csv_file('currentdraft.txt')
-    print(25 * "-" , "CURRENT DRAFTS" , 25 * "-")
+    print(25 * "-", "CURRENT DRAFTS", 25 * "-")
     print_beers(current_list)
-    print(30 * "-" , "MENU" , 30 * "-")
+    print(30 * "-", "MENU", 30 * "-")
     print("1. Generate Flight of Beer document.")
     print("2. Remove beer from current draft list.")
     print("3. Add beer to current draft list.")
     print("4. Create new beer in archive.")
     print("5. Exit")
     print(66 * "-")
+
 
 RUNNING=True
 while RUNNING:          ## While loop which will keep going until loop = False
